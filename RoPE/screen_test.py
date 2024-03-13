@@ -177,7 +177,7 @@ def test_RoPE():
 @triton.testing.perf_report(
     triton.testing.Benchmark(
         x_names=['seq_len'],
-        x_vals=[128 * i for i in range(2, 32)],
+        x_vals=[128 * i for i in range(2, 10)],
         line_arg='provider',
         line_vals=['triton', 'torch'],
         line_names=['Triton', 'Torch'],
@@ -222,6 +222,6 @@ def bench_RoPE(dim, seq_len, head, batch, dtype, provider, mode='forward', eps=1
 
 
 if __name__ == "__main__":
-   test_RoPE()
+#    test_RoPE()
    bench_RoPE.run(save_path='.', print_data=True)
    
