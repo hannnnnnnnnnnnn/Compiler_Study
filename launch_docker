@@ -1,1 +1,16 @@
-sudo docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -v /home/ubuntu/Kyeonghan:/workspace/Kyeonghan --rm -it nvcr.io/nvidia/pytorch:23.10-py3n
+sudo docker run --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -v /home/ubuntu/Kyeonghan:/workspace/Kyeonghan --rm -it nvcr.io/nvidia/pytorch:23.10-py3
+
+#triton latest
+git clone https://github.com/openai/triton.git;
+cd triton;
+
+python -m venv .venv --prompt triton;
+source .venv/bin/activate;
+
+pip install torch numpy
+pip install git+https://github.com/NVIDIA/TransformerEngine.git@stable
+pip install ninja cmake wheel; # build-time dependencies
+pip install -e python
+
+#matplotlib
+pip install matplotlib
